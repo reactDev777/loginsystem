@@ -101,5 +101,5 @@ const timerFn = (dispatch) => {
   setTimeout(() => {
     dispatch(logout());
      
-     }, 5000);
+     }, 15000);
 };
