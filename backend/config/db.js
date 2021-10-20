@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
-// let url ="mongodb+srv://pos:pos123@cluster0.bbgzv.mongodb.net/pos?retryWrites=true&w=majority";
-let url = "mongodb://127.0.0.1:27017/test2";
+let url='mongodb+srv://crbs:crbs123@cluster0.bbgzv.mongodb.net/crbs?retryWrites=true&w=majority'
+
+// let url = "mongodb://127.0.0.1:27017/test2";
 let connectDB = async () => {
   try {
     const conn = await mongoose.connect(
