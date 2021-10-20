@@ -56,18 +56,17 @@ export const userRegisterAction =
     }
   };
 
-export const userLoginAction = (email, password  ) => async (dispatch) => {
+export const userLoginAction = (email, password  ,history) => async (dispatch) => {
   try {
     dispatch({
       type: USER_LOGIN_REQUEST,
     });
-
+ console.log(history);
     const config = {
       headers: {
         "Content-Type": "application/json",
       },
     };
-    timerFn(dispatch);
     const { data } = await axios.post("/api/user", { email, password }, config);
     //  console.log(data);
     dispatch({
@@ -75,6 +74,8 @@ export const userLoginAction = (email, password  ) => async (dispatch) => {
       payload: data,
     });
     localStorage.setItem("userInfo", JSON.stringify(data));
+    timerFn(dispatch,history);
+
   } catch (error) {
     dispatch({
       type: USER_LOGIN_FAIL,
@@ -97,9 +98,9 @@ export const logout = () => async (dispatch) => {
 
 //  You can set 3600000 seconds which is equal to one hours and it will automatically logout 
 
-const timerFn = (dispatch) => {
+const timerFn = (dispatch,history) => {
   setTimeout(() => {
     dispatch(logout());
-     
+      history.push("/login")
      }, 15000);
 };

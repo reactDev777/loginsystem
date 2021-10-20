@@ -1,7 +1,7 @@
 import React,{useEffect,useState} from 'react'
 import { useSelector ,useDispatch} from 'react-redux';
 import { logoutAction } from "./store/action/userAction";
-
+import { Link } from 'react-router-dom';
 const Home = () => {
    const [isLogged, setLogged] = useState(false)
     const dispatch = useDispatch()
@@ -28,9 +28,11 @@ const Home = () => {
         <div >
             <h1 className="text-center my-4">
             Home Screen
-  <br />
-            <a href="/main">Go to Main</a>
+  <br /> 
+              Protected Screen <br /> You can go to Main if You logged in
+            <Link to="/main">Go to Main</Link>
             </h1> 
+            <p className=" text-center">Automatically logout user and redirect  to Login Page</p>
         </div>
     )
 }

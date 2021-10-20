@@ -10,7 +10,7 @@ const { Option } = Select;
 
 const Login = () => {
   const [form] = Form.useForm();
-
+  const history = useHistory();
   const onFinish = (values) => {
     console.log("Received values of form: ", values);
 
@@ -18,10 +18,10 @@ const Login = () => {
     const password = values.password;
 
     console.log("Received values of form: ", values);
-    dispatch(userLoginAction(  email, password  ));
+    dispatch(userLoginAction(  email, password ,history ));
   };
 
-  const history = useHistory();
+
 
   const dispatch = useDispatch();
  
